@@ -4,7 +4,17 @@ const burger = require('../models/burger')
 const router = express.Router()
 
 router.get('/', (req, res) => {
-    res.sendFile('/home.html')
+    res.send()
+})
+
+router.get('/all', (req, res) => {
+    burger.selectAll((err, data) => {
+        if (err) {
+            return res.json(err)
+        }
+        console.log(data)
+        res.render('index', {burgers: data})
+    })
 })
 
 
