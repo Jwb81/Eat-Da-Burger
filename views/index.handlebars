@@ -1,5 +1,29 @@
-{{#each burgers}}
-    <p>
-        Name: {{ burger_name }}
-    </p>
-{{/each}}
+<div style='width: 100%;text-align: center;'>
+    <img src='/assets/images/burger.png' class='burger-logo'>
+    
+    <div id='uneaten-burgers'>
+        {{#each burgers}}
+            {{#unless devoured }}
+                <p>
+                    <span id='burger-{{ id }}' ></span>Ready: {{ burger_name }} 
+                    <button class='eat-burger-btn' data-id={{ id }} >Eat!</button>
+                </p>
+                
+            {{/unless}}
+        {{/each}}
+    </div>
+
+    <div id='eaten-burgers'>
+        {{#each burgers}}
+            {{#if devoured}}
+                <p>
+                    Eaten: {{ burger_name }}
+                </p>
+            {{/if}}
+        {{/each}}
+    </div>
+</div>
+
+<div style='width: 100%;text-align: center;'>
+
+</div>
