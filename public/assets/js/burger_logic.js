@@ -55,4 +55,4 @@ $('#submit-order').click(function () {
             console.log('failed')
         }
     })
-})
+}) 
