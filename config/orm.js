@@ -44,6 +44,12 @@ const orm = {
         // query = mysql.format(query, [set, where])
 
         const q = db.query(query, [set, where], cb)
+    },
+
+    deleteOne: (id, cb) => {
+        let query = 'DELETE FROM burgers WHERE `id` = ?'
+
+        db.query(query, [id], cb)
     }
 }
 

@@ -3,11 +3,11 @@ const burger = require('../models/burger')
 
 const router = express.Router()
 
-router.get('/', (req, res) => {
-    res.send()
-})
+// router.get('/', (req, res) => {
+//     res.send()
+// })
 
-router.get('/all', (req, res) => {
+router.get('/', (req, res) => {
     burger.selectAll((err, data) => {
         if (err) {
             return res.send(err)
@@ -48,6 +48,22 @@ router.post('/burger', (req, res) => {
         res.json({
             success: true,
             insertId: data.insertId
+        })
+    })
+})
+
+router.delete('/burger', (req, res) => {
+    const id = req.body.id
+
+    burger.deleteOne(id, (err, data) => {
+        if (err) {
+            res.json({
+                success: false
+            })
+        }
+
+        res.json({
+            success: true
         })
     })
 })

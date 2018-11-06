@@ -1,8 +1,45 @@
+/**
+ * FUNCTIONS
+ */
+
+// create an HTML element for a burger
+const createHTML = (id, burgerName, devoured = false) => {
+    let container = $('<p>')
+        .attr('id', 'burger-' + id + '-container')
+
+    let name = $('<span>')
+        .attr('id', 'burger-' + id + '-name')
+        .text(burgerName)
+
+    let btn = $('<button>')
+        .data('id', id)
+
+    if (devoured) {
+        btn
+            .addClass('remove-burger-btn')
+            .text('Remove')
+
+    } else {
+        btn
+            .addClass('eat-burger-btn')
+            .text('Eat!')
+    }
+
+    // append elements and return it
+    container
+        .append(name)
+        .append(btn)
+
+    return container
+}
+
 // event listeners
-$('.eat-burger-btn').click(function (evt) {
+// $('.eat-burger-btn').click(function (evt) {
+$('#uneaten-burgers').on('click', '.eat-burger-btn', function (evt) {
 
     // grab the burger id
     const id = $(this).data('id')
+    const burgerName = $(`#burger-${id}-name`).text()
 
     // change the burger to devoured in the database
     $.ajax({
@@ -13,22 +50,50 @@ $('.eat-burger-btn').click(function (evt) {
             devoured: true
         }
     }).then(data => {
-        console.log(data)
 
         // copy the container to post later
-        const con = $(`#burger-${id}-container`)
+        // const con = $(`#burger-${id}-container`)
         $(`#burger-${id}-container`).remove()
-        $('#eaten-burgers').append(con)
+        // $('#eaten-burgers').append(con)
 
+        // grab the burger name and create a new container for it
+        const newElement = createHTML(id, burgerName, true)
 
+        // append it to the 'Devoured' side
+        $('#eaten-burgers')
+            .append(newElement)
 
     })
 
 })
 
+// $('.remove-burger-btn').click(function (evt) {
+$('#eaten-burgers').on('click', '.remove-burger-btn', function (evt) {
+
+    // get the id
+    const id = $(this).data('id')
+
+    // delete request to database
+    $.ajax({
+        method: 'DELETE',
+        url: '/burger',
+        data: {
+            id
+        },
+        success: data => {
+            if (!data.success) {
+                return console.log('Somthing went wrong when deleting the burger')
+            }
+
+            // remove element from the page
+            $(`#burger-${id}-container`).remove()
+        }
+    })
+})
+
 $('#submit-order').click(function () {
     // grab the name of the burger
-    const burgerName = $('#new-burger').val()
+    const burgerName = $('#new-burger-input').val()
 
     // add the burger to the database
     $.ajax({
@@ -41,18 +106,13 @@ $('#submit-order').click(function () {
         if (data.success) {
             const insertId = data.insertId
 
-            // create a new burger and add it to the page
-            $('<p>')
-                .attr('id', `burger-${insertId}-container`)
+            // create a container with the new id
+            const newElement = createHTML(insertId, burgerName)
 
-            $('<span>')
-                .attr('id', `burger-${burgerName}-name`)
-
-            $('<button>')
-                .addClass('eat-burger-btn')
-                .data('id', insertId)
+            // append it onto the uneaten burger side
+            $('#uneaten-burgers').append(newElement)
         } else {
             console.log('failed')
         }
     })
-}) 
+})

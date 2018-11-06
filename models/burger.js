@@ -11,6 +11,10 @@ const burger = {
 
     updateOne: (set, where, cb) => {
         orm.updateOne(set, where, cb)
+    },
+
+    deleteOne: (id, cb) => {
+        orm.deleteOne(id, cb)
     }
 
     

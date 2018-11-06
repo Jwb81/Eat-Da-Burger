@@ -2,3 +2,15 @@
     width: 150px;
     margin: 0 auto;
 }
+
+#uneaten-burgers, #eaten-burgers {
+    border: 3px solid black
+}
+
+[class*=burger-btn] {
+    float: right;
+}
+
+#new-burger-input {
+    margin-top: 25px;
+}
