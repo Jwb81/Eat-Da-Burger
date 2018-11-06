@@ -2,10 +2,11 @@
     <img src='/assets/images/burger.png' class='burger-logo'>
     
     <div id='uneaten-burgers'>
+        <h2>Ready to eat:</h2>
         {{#each burgers}}
             {{#unless devoured }}
                 <p id='burger-{{ id }}-container'>
-                    <span id='burger-{{ id }}-name' ></span>Ready: {{ burger_name }} 
+                    <span id='burger-{{ id }}-name' ></span>{{ burger_name }} 
                     <button class='eat-burger-btn' data-id="{{ id }}" >Eat!</button>
                 </p>
                 
@@ -14,14 +15,19 @@
     </div>
 
     <div id='eaten-burgers'>
+    <hr>
+        <h2>Devoured:</h2>
         {{#each burgers}}
             {{#if devoured}}
                 <p>
-                    Eaten: {{ burger_name }}
+                    {{ burger_name }}
                 </p>
             {{/if}}
         {{/each}}
     </div>
+
+    <input type='text' id='new-burger' placeholder='Enter your burger here!'>
+    <button id='submit-order'>Add!</button>
 </div>
 
 <div style='width: 100%;text-align: center;'>
