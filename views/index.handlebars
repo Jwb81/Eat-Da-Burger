@@ -1,4 +1,4 @@
-<div style='width: 100%;text-align: center;'>
+<div style='width: 100%;text-align: center;' class='container'>
     <img src='/assets/images/burger.png' class='burger-logo'>
     
     <div id='uneaten-burgers'>
@@ -6,7 +6,7 @@
             {{#unless devoured }}
                 <p>
                     <span id='burger-{{ id }}' ></span>Ready: {{ burger_name }} 
-                    <button class='eat-burger-btn' data-id={{ id }} >Eat!</button>
+                    <button class='eat-burger-btn' data-id="{{ id }}" >Eat!</button>
                 </p>
                 
             {{/unless}}
