@@ -16,12 +16,12 @@ const createHTML = (id, burgerName, devoured = false) => {
 
     if (devoured) {
         btn
-            .addClass('remove-burger-btn')
+            .addClass('remove-burger-btn btn btn-danger')
             .text('Remove')
 
     } else {
         btn
-            .addClass('eat-burger-btn')
+            .addClass('eat-burger-btn btn btn-success')
             .text('Eat!')
     }
 

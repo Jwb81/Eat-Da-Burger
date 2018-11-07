@@ -10,7 +10,7 @@
                 {{#unless devoured }}
                     <p id='burger-{{ id }}-container'>
                         <span id='burger-{{ id }}-name' >{{ burger_name }}</span>
-                        <button class='eat-burger-btn' data-id="{{ id }}" >Eat!</button>
+                        <button class='eat-burger-btn btn btn-success' data-id="{{ id }}" >Eat!</button>
                     </p>
                     
                 {{/unless}}
@@ -24,7 +24,7 @@
                 {{#if devoured}}
                     <p>
                         {{ burger_name }}
-                        <button class='remove-burger-btn' data-id="{{ id }}">Remove</button>
+                        <button class='remove-burger-btn btn btn-danger' data-id="{{ id }}">Remove</button>
                     </p>
                 {{/if}}
             {{/each}}
