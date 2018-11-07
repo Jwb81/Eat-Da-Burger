@@ -113,6 +113,9 @@ $('#submit-order-form').submit(function (evt) {
 
             // append it onto the uneaten burger side
             $('#uneaten-burgers').append(newElement)
+            
+            // clear the input 
+            $('#new-burger-input').val('')
         } else {
             console.log('failed')
         }
