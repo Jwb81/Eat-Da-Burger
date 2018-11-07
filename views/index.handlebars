@@ -1,5 +1,4 @@
-<div style='width: 100%;text-align: center;' class='container'>
-    <img src='/assets/images/burger.png' class='burger-logo'>
+<div style='width: 100%;text-align: center;' class='container' id='main'>
     
     <div class="row">
 
@@ -31,10 +30,20 @@
         </div>
     </div>
 
-    <input type='text' id='new-burger-input' placeholder='Enter your burger here!'>
-    <button id='submit-order'>Add!</button>
+    <form id='submit-order-form' style='width: 50%;margin: 0 auto;'>
+        <div class="input-group mb-3" style='margin-top: 30px;' >
+            <input type="text" id='new-burger-input' class="form-control" placeholder="Enter your burger here!" aria-label="Enter your burger here!" aria-describedby="button-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit" id="submit-order-btn">Add!</button>
+            </div>
+        </div>
+    </form>
+
+    {{!-- <input type='text' id='new-burger-input' placeholder='Enter your burger here!'>
+    <button id='submit-order'>Add!</button> --}}
 </div>
 
 <div style='width: 100%;text-align: center;'>
+    <img src='/assets/images/burger.png' class='burger-logo'>
 
 </div>

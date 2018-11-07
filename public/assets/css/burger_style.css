@@ -1,16 +1,30 @@
+body {
+    background-image: url(/assets/images/cutting_board.jpg);
+    background-size: cover;
+}
+
+#main {
+    background-image: url(/assets/images/black_board.jpg);
+    background-size: 50%;
+    min-height: 75vh;
+}
+
 .burger-logo {
     width: 150px;
     margin: 0 auto;
 }
 
 #uneaten-burgers, #eaten-burgers {
-    border: 3px solid black
+    color: white;
+    padding: 30px;
+    max-height: 90%;
+    padding-top: 125px;
 }
 
 [class*=burger-btn] {
     float: right;
 }
 
-#new-burger-input {
+/* #new-burger-input {
     margin-top: 25px;
-}
+} */

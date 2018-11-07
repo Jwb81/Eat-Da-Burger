@@ -91,7 +91,9 @@ $('#eaten-burgers').on('click', '.remove-burger-btn', function (evt) {
     })
 })
 
-$('#submit-order').click(function () {
+$('#submit-order-form').submit(function (evt) {
+    evt.preventDefault()
+    
     // grab the name of the burger
     const burgerName = $('#new-burger-input').val()
 
